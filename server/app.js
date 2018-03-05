@@ -10,6 +10,9 @@ const mongoose = require('mongoose');
 const {dbURL} = require('./config');
 const cors = require('cors');
 const auth = require('./routes/auth');
+const products = require('./routes/products');
+const recipes = require('./routes/recipes');
+const orders = require('./routes/orders');
 
 const app = express();
 
@@ -52,7 +55,16 @@ app.use(session({
 
 require('./passport')(app)
 
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
 app.use('/api/auth', auth);
+app.use('/api/products', products);
+app.use('/api/recipes', recipes);
+app.use('/api/orders', orders);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

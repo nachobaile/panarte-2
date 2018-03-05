@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +13,7 @@ export class LoginFormComponent implements OnInit {
   username:string;
   password:string;
   error:string;
-  constructor(public session:SessionService) { }
+  constructor(public session:SessionService, public router:Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
