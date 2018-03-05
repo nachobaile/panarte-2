@@ -7,10 +7,14 @@ import { SessionService } from '../../services/session.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+error
   constructor(public session: SessionService) { }
   title = 'EMPAN-ARTE';
   ngOnInit() {
   }
-
+  logout(){
+    this.session.logout()
+    .catch(e => this.error = e)
+    .subscribe();
+  }
 }

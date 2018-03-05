@@ -20,14 +20,14 @@ export class LoginFormComponent implements OnInit {
 
   login(){
     this.session.login(this.username,this.password)
-    .catch(e => this.error = e)
-    .subscribe(user => console.log(`Welcome ${user.username}`));
-  }
-
-  signup(){
-    this.session.signup(this.username,this.password)
-    .catch(e => this.error = e)
-    .subscribe();
+    .subscribe(user => {
+      console.log('te ejecuto a ti')
+      this.router.navigate(["home"])
+      console.log(`Welcome ${user.username}`
+    )});
+    
+    
+    
   }
 
   logout(){

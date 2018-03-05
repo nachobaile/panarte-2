@@ -9,6 +9,7 @@ import { SessionService } from '../services/session.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HomeComponent } from './home/home.component';
     LoginFormComponent,
     NavBarComponent,
     HomeComponent,
+    SignupComponent,
     
     
   ],
