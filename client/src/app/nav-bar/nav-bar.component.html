@@ -19,8 +19,20 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
+        
         <li>
-          <a href="#"> Nuestros EmPan-Artesanos</a>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+                 Nuestros EmPan-Artesanos <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="products">Nuestros panes</a></li>
+                  <li><a href="#">Nuestras tartas</a></li>
+                  <li class="dropdown">
+                    <a href="#">Nuestras empanadas</a>
+                </ul>
+              </div>
+          <!-- <a [routerLink]="('products')"> Nuestros EmPan-Artesanos</a> -->
         </li>
         <li>
           <a href="#">Promociones</a>

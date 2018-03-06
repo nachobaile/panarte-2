@@ -6,10 +6,12 @@ import { routes } from './routes';
 import { HttpModule } from '@angular/http';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SessionService } from '../services/session.service';
+import { ProductService } from '../services/product.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './signup/signup.component';
+import { ProductsComponent } from './products/products.component';
+import { PanesComponent } from './panes/panes.component';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { SignupComponent } from './signup/signup.component';
     LoginFormComponent,
     NavBarComponent,
     HomeComponent,
-    SignupComponent,
+    ProductsComponent,
+    PanesComponent,
     
     
   ],
@@ -29,7 +32,7 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     
   ],
-  providers: [SessionService],
+  providers: [SessionService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
