@@ -14,9 +14,11 @@ const products = require('./routes/products');
 const recipes = require('./routes/recipes');
 const orders = require('./routes/orders');
 
+const dotenv=require("dotenv").load();
+
 const app = express();
 
-mongoose.connect(dbURL)
+mongoose.connect(process.env.MONGODB_URI)
         .then(()=> console.log("Connected to DB"))
         .catch(e => console.error(e));
 
@@ -65,6 +67,9 @@ app.use('/api/products', products);
 app.use('/api/recipes', recipes);
 app.use('/api/orders', orders);
 
+app.use(function(req,res){
+  res.sendfile(__dirname + "/public/index.html");
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

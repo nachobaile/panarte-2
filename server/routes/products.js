@@ -9,6 +9,14 @@ router.get("/show", (req, res, next) => {
     .then(productsFound => res.status(200).json(productsFound))
     .catch(error => res.status(500).json(error));
 });
+
+router.get("/show/:id", (req, res, next) => {
+  const productId=req.params.id;
+  Product.findById(productId)
+    .then(productFound => res.status(200).json(productFound))
+    .catch(error => res.status(500).json(error));
+});
+
 //CRUD CREATE
 router.post("/create", (req, res, next) => {
   console.log(req.body);

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Products = require('../models/Products');
 // const Orders = require('../models/Orders');
 
-const {dbURL} = require('./../config');
+const {dbURL} = require('../config');
 
 console.log(dbURL)
 
