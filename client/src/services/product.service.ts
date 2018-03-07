@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import {environment}from "../environments/environment"
 
-const  BASEURL:string= environment.BASEURL;
+
 
 interface User {
   username:string,
@@ -15,20 +15,20 @@ interface User {
 @Injectable()
 export class ProductService {
 
-  BASE_URL:string = "http://localhost:3000"
+  BASEURL:string= environment.BASEURL;
   options:object = {withCredentials:true};
   constructor(private http: Http) {}
 
   
    
    getListProduct(){
-      return this.http.get(`${this.BASE_URL}/api/products/show`)
+      return this.http.get(`${this.BASEURL}/api/products/show`)
       .map((res) => res.json());
 
    }
 
    getProduct(id) {
-    return this.http.get(`${this.BASE_URL}/api/products/show/${id}`)
+    return this.http.get(`${this.BASEURL}/api/products/show/${id}`)
       .map((res) => res.json());
   
 }

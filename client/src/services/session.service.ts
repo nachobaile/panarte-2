@@ -6,8 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { EventEmitter } from 'events';
 import {environment}from "../environments/environment"
 
-const  BASEURL:string= environment.BASEURL;
-
+ 
 interface User {
   username:string,
   password:string
@@ -16,7 +15,8 @@ interface User {
 @Injectable()
 export class SessionService {
 
-  BASEURL:string = "http://localhost:3000"
+  BASEURL:string= environment.BASEURL;
+
   options:object = {withCredentials:true};
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
