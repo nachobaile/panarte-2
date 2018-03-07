@@ -1,14 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { ProductService } from "../../services/product.service";
+import { Component, OnInit } from '@angular/core';
+import {ProductService } from "../../services/product.service";
 import { CartService } from "../../services/cart.service";
+
+
 @Component({
-  selector: "app-products",
-  templateUrl: "./products.component.html",
-  styleUrls: ["./products.component.css"]
+  selector: 'app-cakes',
+  templateUrl: './cakes.component.html',
+  styleUrls: ['./cakes.component.css']
 })
-export class ProductsComponent implements OnInit {
-  productList: Array<any> = [];
- 
+export class CakesComponent implements OnInit {
+  productList
   constructor(public service: ProductService, public cartService: CartService) {
     this.service 
       .getListProduct()
@@ -17,11 +18,10 @@ export class ProductsComponent implements OnInit {
          console.log(this.productList)
       });
   }
+  
 
   ngOnInit() {
-    
   }
-
   addToCart(productId){
     this.cartService.cart.push(productId);
   }

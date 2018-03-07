@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SessionService } from '../services/session.service'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EMPAN-ARTE';
+  user;
+  constructor(public session:SessionService){
+    this.user=this.session.getUser();
+    this.session.getUserEvent()
+  }
 }

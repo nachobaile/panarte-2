@@ -12,6 +12,11 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { PanesComponent } from './panes/panes.component';
+import { FilterPipe } from './filter.pipe';
+import { PattyComponent } from './patty/patty.component';
+import { CakesComponent } from './cakes/cakes.component';
+import { CartComponent } from './cart/cart.component';
+import { CartService } from '../services/cart.service';
 
 
 @NgModule({
@@ -22,6 +27,10 @@ import { PanesComponent } from './panes/panes.component';
     HomeComponent,
     ProductsComponent,
     PanesComponent,
+    FilterPipe,
+    PattyComponent,
+    CakesComponent,
+    CartComponent,
     
     
   ],
@@ -32,7 +41,7 @@ import { PanesComponent } from './panes/panes.component';
     FormsModule,
     
   ],
-  providers: [SessionService,ProductService],
+  providers: [SessionService,ProductService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

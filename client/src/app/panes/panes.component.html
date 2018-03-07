@@ -1,7 +1,12 @@
-<div *ngFor="let productos of productList">
-    <div>{{productos.name}}</div>
-    <div><img src="{{productos.image}}" width="50" height="50"></div>
-    <div>{{productos.price}}</div>
-    <div>{{productos.ingredients}} </div>
-    </div>
-    
+
+    <div *ngFor="let productos of productList">
+            <div *ngIf="productos.category==='Breads'">
+              <div>{{productos.name}}</div>
+              <div>{{productos.category }}</div>
+              <div>
+                  <img src="{{productos.image}}" alt="">
+              </div>
+              <div>{{productos.price}}</div>
+              <div>{{productos.ingredients}}</div>
+            </div>
+        </div>

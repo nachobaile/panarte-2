@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+import { EventEmitter } from 'events';
 
 interface User {
   username:string,
@@ -19,9 +20,13 @@ export class SessionService {
   }
 
   private user:User;
+  private userEvent:EventEmitter;
 
   getUser(){
     return this.user;
+  }
+  getUserEvent(){
+    return this.userEvent;
   }
   private configureUser(set=false){
     return (user) => {

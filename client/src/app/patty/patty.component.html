@@ -1,0 +1,12 @@
+
+    <div *ngFor="let productos of productList">
+        <div *ngIf="productos.category==='Pattys'">
+          <div>{{productos.name}}</div>
+          <div>{{productos.category }}</div>
+          <div>
+              <img src="{{productos.image}}" alt="">
+          </div>
+          <div>{{productos.price}}</div>
+          <div>{{productos.ingredients}}</div>
+        </div>
+    </div>

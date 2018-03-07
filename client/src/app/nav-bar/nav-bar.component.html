@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    
+
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -10,29 +10,36 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img src="https://vectr.com/nachobaile/a14B7rZ23K.svg?width=693.8545005303426&height=351.5&select=f2SrQYyNGP,casZcfLC4e,c4cpRRrbkI&source=selection"
           alt="">
       </a>
     </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        
+
         <li>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
-                 Nuestros EmPan-Artesanos <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="products">Nuestros panes</a></li>
-                  <li><a href="#">Nuestras tartas</a></li>
-                  <li class="dropdown">
-                    <a href="#">Nuestras empanadas</a>
-                </ul>
-              </div>
-          <!-- <a [routerLink]="('products')"> Nuestros EmPan-Artesanos</a> -->
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+              Nuestros EmPan-Artesanos
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a [routerLink]='["products/breads"]'>Nuestros panes</a>
+              </li>
+              <li>
+                <a [routerLink]='["products/cakes"]'>Nuestras tartas</a>
+              </li>
+              <li class="dropdown">
+                <a [routerLink]='["products/pattys"]'>Nuestras empanadas</a>
+              </li>
+            
+            </ul>
+          </div>
+          
         </li>
         <li>
           <a href="#">Promociones</a>
@@ -41,7 +48,7 @@
           <a href="#">Recetas Empan-Artestasanas</a>
         </li>
         <li>
-          <button (click)="logout()">Logout</button> 
+          <button (click)="logout()" class="btn btn-danger"> Logout </button>
         </li>
       </ul>
     </div>
