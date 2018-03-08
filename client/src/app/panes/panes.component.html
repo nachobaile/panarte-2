@@ -4,10 +4,11 @@
               <div>{{productos.name}}</div>
               <div>{{productos.category }}</div>
               <div>
-                  <img src="{{productos.image}}" alt="">
+                  <img src="{{productos.image}}" width="220" height="120">
               </div>
               <div>{{productos.price}}</div>
               <div>{{productos.ingredients}}</div>
-              <button (click)="addToCart(productos)" > Enviar al carro </button>
+              <button (click)="addToCart(productos)" >  Añadir al carrito  </button>
+              <a [routerLink]='["../../cart"]' > Ver carrito </a>  
             </div>
         </div>

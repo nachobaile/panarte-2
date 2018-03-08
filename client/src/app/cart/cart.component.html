@@ -3,12 +3,13 @@
 </p>
 
 <div *ngFor="let productos of cart">
-   
-      <div>{{productos | json}}</div>
-       <div>
-          <img src="{{productos.image}}" alt="">
-      </div>
-      <div>{{productos.price}}</div>
-  
-    </div>
-    
+  <div>
+    <img src="{{productos.image}}" alt="">
+  </div>
+  <div>{{productos.price}}</div>
+
+</div>
+
+<h1>{{totalPrice}}</h1>
+
+<button (click)='createCart()'>COMPRAR</button>

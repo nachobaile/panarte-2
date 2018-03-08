@@ -8,15 +8,15 @@ import { environment } from "../environments/environment";
 @Injectable()
 export class CartService {
   public cart = [];
-
   BASEURL: string = environment.BASEURL;
   options: object = { withCredentials: true };
   constructor(private http: Http) {}
-  createCart(userId) {
+  createCart() {
+    const productsBought = this.cart
     return this.http
       .post(
-        `${this.BASEURL}/api/cart/new`,
-        { orders: this.cart, buyer: userId },
+        `${this.BASEURL}/api/orders/new`,
+        { productsBought },
         this.options
       )
       .map(res => res.json());
