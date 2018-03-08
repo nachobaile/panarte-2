@@ -20,14 +20,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/app.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".fondo{\n    background-image: url(\"https://vectr.com/nachobaile/bVFgQdBJd.svg?width=640&height=640&select=\");\n  \n    background-size: 100% 100%;\n    \n}\nhtml {\n    height: 100%\n}"
 
 /***/ }),
 
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div *ngIf=\"User\"></div>\n<app-nav-bar></app-nav-bar>\n<!-- <app-home></app-home> -->\n<app-login-form></app-login-form>\n<router-outlet></router-outlet>\n\n\n"
+module.exports = "<div class=\"fondo\">\n<div *ngIf=\"User\"></div>\n<app-nav-bar></app-nav-bar>\n<!-- <app-home></app-home> -->\n<app-login-form></app-login-form>\n<router-outlet></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -95,12 +95,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__cakes_cakes_component__ = __webpack_require__("./src/app/cakes/cakes.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__cart_cart_component__ = __webpack_require__("./src/app/cart/cart.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_cart_service__ = __webpack_require__("./src/services/cart.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__promo_promo_component__ = __webpack_require__("./src/app/promo/promo.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -136,6 +138,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_15__patty_patty_component__["a" /* PattyComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__cakes_cakes_component__["a" /* CakesComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__cart_cart_component__["a" /* CartComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__promo_promo_component__["a" /* PromoComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -164,7 +167,7 @@ module.exports = "div{\n    padding: 5px;\n    \n}\n\n.cont{\n    border: 3px bl
 /***/ "./src/app/cakes/cakes.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div *ngFor=\"let productos of productList\">\n    <div *ngIf=\"productos.category==='cakes'\">\n        <div>{{productos.name}}</div>\n        <div>\n            <img src=\"{{productos.image}}\"width=\"220\" height=\"120\">\n        </div>\n        <div>{{productos.category }}</div>\n     \n        <div>{{productos.price}}</div>\n        <div>{{productos.ingredients}}</div>\n    </div>\n</div>\n\n"
+module.exports = "\n<div *ngFor=\"let productos of productList\">\n    <div *ngIf=\"productos.category==='cakes'\">\n        <div>{{productos.name}}</div>\n        <div>\n            <img src=\"{{productos.image}}\"width=\"220\" height=\"120\">\n        </div>\n        <div>{{productos.category }}</div>\n     \n        <div>{{productos.price}}</div>\n        <div>{{productos.ingredients}}</div>\n        <button (click)=\"addToCart(productos)\"> Enviar al carro </button>\n        <a [routerLink]='[\"../../cart\"]' > Enviar al carro </a>  \n        <!-- button click = addToCart(proudctos._id) -->\n    </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -203,6 +206,7 @@ var CakesComponent = /** @class */ (function () {
     CakesComponent.prototype.ngOnInit = function () {
     };
     CakesComponent.prototype.addToCart = function (productId) {
+        console.log(this.cartService.cart);
         this.cartService.cart.push(productId);
     };
     CakesComponent = __decorate([
@@ -230,7 +234,7 @@ module.exports = ""
 /***/ "./src/app/cart/cart.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cart works!\n</p>\n"
+module.exports = "<p>\n  cart works!\n</p>\n\n<div *ngFor=\"let productos of cart\">\n   \n      <div>{{productos | json}}</div>\n       <div>\n          <img src=\"{{productos.image}}\" alt=\"\">\n      </div>\n      <div>{{productos.price}}</div>\n  \n    </div>\n    "
 
 /***/ }),
 
@@ -240,6 +244,8 @@ module.exports = "<p>\n  cart works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_cart_service__ = __webpack_require__("./src/services/cart.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_product_service__ = __webpack_require__("./src/services/product.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -250,10 +256,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var CartComponent = /** @class */ (function () {
-    function CartComponent() {
+    function CartComponent(service, cartService) {
+        this.service = service;
+        this.cartService = cartService;
+        this.cart = this.cartService.cart;
     }
+    ;
     CartComponent.prototype.ngOnInit = function () {
+        console.log('cargo el componente cart');
+        console.log(this.cartService.cart);
+        console.log(this.cart);
+    };
+    CartComponent.prototype.createCart = function () {
+        var products = this.cart;
+        this.cartService.cart = this.cart;
     };
     CartComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -261,7 +280,7 @@ var CartComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/cart/cart.component.html"),
             styles: [__webpack_require__("./src/app/cart/cart.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_product_service__["a" /* ProductService */], __WEBPACK_IMPORTED_MODULE_1__services_cart_service__["a" /* CartService */]])
     ], CartComponent);
     return CartComponent;
 }());
@@ -447,7 +466,7 @@ module.exports = ".botones h1{\n    display: inline-block;\n    text-align: cent
 /***/ "./src/app/nav-bar/nav-bar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n\n\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\"\n        aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"/\">\n        <img src=\"https://vectr.com/nachobaile/a14B7rZ23K.svg?width=693.8545005303426&height=351.5&select=f2SrQYyNGP,casZcfLC4e,c4cpRRrbkI&source=selection\"\n          alt=\"\">\n      </a>\n    </div>\n\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n      <ul class=\"nav navbar-nav navbar-right\">\n\n        <li>\n          <div class=\"dropdown\">\n            <button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" data-hover=\"dropdown\">\n              Nuestros EmPan-Artesanos\n              <span class=\"caret\"></span>\n            </button>\n            <ul class=\"dropdown-menu\">\n              <li>\n                <a [routerLink]='[\"products/breads\"]'>Nuestros panes</a>\n              </li>\n              <li>\n                <a [routerLink]='[\"products/cakes\"]'>Nuestras tartas</a>\n              </li>\n              <li class=\"dropdown\">\n                <a [routerLink]='[\"products/pattys\"]'>Nuestras empanadas</a>\n              </li>\n            \n            </ul>\n          </div>\n          \n        </li>\n        <li>\n          <a href=\"#\">Promociones</a>\n        </li>\n        <li>\n          <a href=\"#\">Recetas Empan-Artestasanas</a>\n        </li>\n        <li>\n          <button (click)=\"logout()\" class=\"btn btn-danger\"> Logout </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n\n\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\"\n        aria-expanded=\"false\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"/\">\n        <img src=\"https://vectr.com/nachobaile/a14B7rZ23K.svg?width=693.8545005303426&height=351.5&select=f2SrQYyNGP,casZcfLC4e,c4cpRRrbkI&source=selection\"\n          alt=\"\">\n      </a>\n    </div>\n\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n      <ul class=\"nav navbar-nav navbar-right\">\n\n        <li>\n          <div class=\"dropdown\">\n            <button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" data-hover=\"dropdown\">\n              Nuestros EmPan-Artesanos\n              <span class=\"caret\"></span>\n            </button>\n            <ul class=\"dropdown-menu\">\n              <li>\n                <a [routerLink]='[\"products/breads\"]'>Nuestros panes</a>\n              </li>\n              <li>\n                <a [routerLink]='[\"products/cakes\"]'>Nuestras tartas</a>\n              </li>\n              <li class=\"dropdown\">\n                <a [routerLink]='[\"products/pattys\"]'>Nuestras empanadas</a>\n              </li>\n            \n            </ul>\n          </div>\n          \n        </li>\n        <li>\n          <a [routerLink]='[\"promo\"]'>Promociones</a>\n        </li>\n        <li>\n          <a href=\"#\">Recetas Empan-Artestasanas</a>\n        </li>\n        <li>\n          <button (click)=\"logout()\" class=\"btn btn-danger\"> Logout </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -507,7 +526,7 @@ module.exports = ""
 /***/ "./src/app/panes/panes.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n    <div *ngFor=\"let productos of productList\">\n            <div *ngIf=\"productos.category==='Breads'\">\n              <div>{{productos.name}}</div>\n              <div>{{productos.category }}</div>\n              <div>\n                  <img src=\"{{productos.image}}\" alt=\"\">\n              </div>\n              <div>{{productos.price}}</div>\n              <div>{{productos.ingredients}}</div>\n            </div>\n        </div>"
+module.exports = "\n    <div *ngFor=\"let productos of productList\">\n            <div *ngIf=\"productos.category==='Breads'\">\n              <div>{{productos.name}}</div>\n              <div>{{productos.category }}</div>\n              <div>\n                  <img src=\"{{productos.image}}\" alt=\"\">\n              </div>\n              <div>{{productos.price}}</div>\n              <div>{{productos.ingredients}}</div>\n              <button (click)=\"addToCart(productos)\" > Enviar al carro </button>\n            </div>\n        </div>"
 
 /***/ }),
 
@@ -573,7 +592,7 @@ module.exports = ""
 /***/ "./src/app/patty/patty.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n    <div *ngFor=\"let productos of productList\">\n        <div *ngIf=\"productos.category==='Pattys'\">\n          <div>{{productos.name}}</div>\n          <div>{{productos.category }}</div>\n          <div>\n              <img src=\"{{productos.image}}\" alt=\"\">\n          </div>\n          <div>{{productos.price}}</div>\n          <div>{{productos.ingredients}}</div>\n        </div>\n    </div>"
+module.exports = "<div *ngFor=\"let productos of productList\">\n    <div *ngIf=\"productos.category==='Pattys'\">\n        <div>{{productos.name}}</div>\n        <div>\n            <img src=\"{{productos.image}}\" alt=\"\">\n        </div>\n        <!-- <div>{{productos.category }}</div> -->\n        <div>{{productos.price}}</div>\n        <div>{{productos.ingredients}}</div>\n        <button (click)=\"addToCart(productos)\" > Enviar al carro </button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -612,7 +631,11 @@ var PattyComponent = /** @class */ (function () {
     PattyComponent.prototype.ngOnInit = function () {
     };
     PattyComponent.prototype.addToCart = function (productId) {
+        console.log('mi producto');
+        console.log(productId);
+        console.log('añado producto al cart');
         this.cartService.cart.push(productId);
+        console.log(this.cartService.cart);
     };
     PattyComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -696,6 +719,73 @@ var ProductsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/promo/promo.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/promo/promo.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngFor=\"let productos of productList\">\n  <div *ngIf=\"productos.category==='promo'\">\n      <div>{{productos.name}}</div>\n      <div>\n          <img src=\"{{productos.image}}\"width=\"220\" height=\"120\">\n      </div>\n      <div>{{productos.category }}</div>\n   \n      <div>{{productos.price}}</div>\n      <div>{{productos.ingredients}}</div>\n      <button (click)=\"addToCart(productos)\"> Enviar al carro </button>\n      <a [routerLink]='[\"../../cart\"]' > Enviar al carro </a>  \n      <!-- button click = addToCart(proudctos._id) -->\n  </div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/promo/promo.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PromoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_product_service__ = __webpack_require__("./src/services/product.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_cart_service__ = __webpack_require__("./src/services/cart.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PromoComponent = /** @class */ (function () {
+    function PromoComponent(service, cartService) {
+        var _this = this;
+        this.service = service;
+        this.cartService = cartService;
+        this.service
+            .getListProduct()
+            .subscribe(function (productList) {
+            _this.productList = productList.slice();
+            console.log(_this.productList);
+        });
+    }
+    PromoComponent.prototype.ngOnInit = function () {
+    };
+    PromoComponent.prototype.addToCart = function (productId) {
+        console.log(this.cartService.cart);
+        this.cartService.cart.push(productId);
+    };
+    PromoComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-promo',
+            template: __webpack_require__("./src/app/promo/promo.component.html"),
+            styles: [__webpack_require__("./src/app/promo/promo.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_product_service__["a" /* ProductService */], __WEBPACK_IMPORTED_MODULE_2__services_cart_service__["a" /* CartService */]])
+    ], PromoComponent);
+    return PromoComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/routes.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -723,7 +813,8 @@ var routes = [
     { path: 'products/pattys', component: __WEBPACK_IMPORTED_MODULE_3__patty_patty_component__["a" /* PattyComponent */] },
     { path: 'products/breads', component: __WEBPACK_IMPORTED_MODULE_4__panes_panes_component__["a" /* PanesComponent */] },
     { path: 'products/cakes', component: __WEBPACK_IMPORTED_MODULE_5__cakes_cakes_component__["a" /* CakesComponent */] },
-    { path: 'products/cart', component: __WEBPACK_IMPORTED_MODULE_6__cart_cart_component__["a" /* CartComponent */] },
+    { path: 'cart', component: __WEBPACK_IMPORTED_MODULE_6__cart_cart_component__["a" /* CartComponent */] },
+    { path: 'promo', component: __WEBPACK_IMPORTED_MODULE_6__cart_cart_component__["a" /* CartComponent */] },
 ];
 
 

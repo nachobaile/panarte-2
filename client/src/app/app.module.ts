@@ -17,6 +17,7 @@ import { PattyComponent } from './patty/patty.component';
 import { CakesComponent } from './cakes/cakes.component';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from '../services/cart.service';
+import { PromoComponent } from './promo/promo.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CartService } from '../services/cart.service';
     PattyComponent,
     CakesComponent,
     CartComponent,
+    PromoComponent,
     
     
   ],

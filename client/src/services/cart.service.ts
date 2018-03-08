@@ -7,7 +7,7 @@ import { environment } from "../environments/environment";
 
 @Injectable()
 export class CartService {
-  cart = [];
+  public cart = [];
 
   BASEURL: string = environment.BASEURL;
   options: object = { withCredentials: true };

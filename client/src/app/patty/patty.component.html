@@ -1,12 +1,12 @@
-
-    <div *ngFor="let productos of productList">
-        <div *ngIf="productos.category==='Pattys'">
-          <div>{{productos.name}}</div>
-          <div>{{productos.category }}</div>
-          <div>
-              <img src="{{productos.image}}" alt="">
-          </div>
-          <div>{{productos.price}}</div>
-          <div>{{productos.ingredients}}</div>
+<div *ngFor="let productos of productList">
+    <div *ngIf="productos.category==='Pattys'">
+        <div>{{productos.name}}</div>
+        <div>
+            <img src="{{productos.image}}" alt="">
         </div>
+        <!-- <div>{{productos.category }}</div> -->
+        <div>{{productos.price}}</div>
+        <div>{{productos.ingredients}}</div>
+        <button (click)="addToCart(productos)" > Enviar al carro </button>
     </div>
+</div>

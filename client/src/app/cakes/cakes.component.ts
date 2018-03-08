@@ -23,6 +23,7 @@ export class CakesComponent implements OnInit {
   ngOnInit() {
   }
   addToCart(productId){
+    console.log(this.cartService.cart)
     this.cartService.cart.push(productId);
   }
 }

@@ -6,6 +6,7 @@ import { PattyComponent} from './patty/patty.component';
 import { PanesComponent} from './panes/panes.component';
 import { CakesComponent} from './cakes/cakes.component';
 import { CartComponent} from './cart/cart.component';
+import { PromoComponent } from './promo/promo.component';
 
 export const routes: Routes = [
 
@@ -16,7 +17,8 @@ export const routes: Routes = [
     { path: 'products/pattys', component: PattyComponent},
     { path: 'products/breads', component: PanesComponent},
     { path: 'products/cakes', component: CakesComponent},
-    { path: 'products/cart', component: CartComponent},
+    { path: 'cart', component: CartComponent},
+    { path: 'promo', component: CartComponent},
    ]
 
    

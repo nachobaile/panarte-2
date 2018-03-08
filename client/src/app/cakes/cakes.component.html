@@ -9,6 +9,9 @@
      
         <div>{{productos.price}}</div>
         <div>{{productos.ingredients}}</div>
+        <button (click)="addToCart(productos)"> Enviar al carro </button>
+        <a [routerLink]='["../../cart"]' > Enviar al carro </a>  
+        <!-- button click = addToCart(proudctos._id) -->
     </div>
 </div>
 

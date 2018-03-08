@@ -4,12 +4,12 @@ import { CartService } from "../../services/cart.service";
 
 
 @Component({
-  selector: 'app-patty',
-  templateUrl: './patty.component.html',
-  styleUrls: ['./patty.component.css']
+  selector: 'app-promo',
+  templateUrl: './promo.component.html',
+  styleUrls: ['./promo.component.css']
 })
-export class PattyComponent implements OnInit {
-productList
+export class PromoComponent implements OnInit {
+  productList
   constructor(public service: ProductService, public cartService: CartService) {
     this.service 
       .getListProduct()
@@ -18,14 +18,12 @@ productList
          console.log(this.productList)
       });
   }
+  
 
   ngOnInit() {
   }
   addToCart(productId){
-    console.log('mi producto')
-    console.log(productId)
-    console.log('añado producto al cart');
-    this.cartService.cart.push(productId);
     console.log(this.cartService.cart)
+    this.cartService.cart.push(productId);
   }
 }

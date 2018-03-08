@@ -8,7 +8,7 @@ const ProductsSchema = new Schema({
   ingredients:String,
   category:{
     type: String,
-    enum: ['Breads', 'Pattys',"cakes"]
+    enum: ['Breads', 'Pattys',"cakes","promo"]
   }
 }, {
   timestamps: {

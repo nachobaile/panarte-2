@@ -12,13 +12,15 @@ const catalogo = [
     name: "Barra de pan de pueblo",
     image: "https://alliquindoiblog.files.wordpress.com/2015/09/panbaguette.png",
     ingredients:" pan rústico enriquecido con harina de espelta y semillas enteras del cereal que se pueden apreciar en su masa y corteza. La espelta es un cereal con un alto valor nutritivo rico en proteínas, minerales, vitaminas B, E y betacarotenos, y fibra insoluble. Estos componentes ayudan a reducir el nivel de colesterol, aceleran el tránsito intestinal y reducen la secreción de ácidos biliares",
-    price: 0.79
+    price: 0.79,
+    category:'Breads',
   },
   {
     name: "Barra pan sin sal",
     image: "http://www.lineaysalud.com/wp-content/uploads/2013/02/pan-e1448478151666.png",
     ingredients:" pan rústico enriquecido con harina de espelta y semillas enteras del cereal que se pueden apreciar en su masa y corteza. La espelta es un cereal con un alto valor nutritivo rico en proteínas, minerales, vitaminas B, E y betacarotenos, y fibra insoluble. Estos componentes ayudan a reducir el nivel de colesterol, aceleran el tránsito intestinal y reducen la secreción de ácidos biliares",
-    price: 0.45
+    price: 0.45,
+    category:'Breads',
  },
   {
     name: "Pan con semillas de girasol",
@@ -288,6 +290,19 @@ const catalogo = [
     price: 12.95,
     category:'cakes',
   },
+  {
+    name: "2 x 1 en todas las empanadas",
+    image: "https://vectr.com/nachobaile/d1Dj6sLCmI.svg?width=640&height=640&select=d1Dj6sLCmIpage0",
+    price: 12.95,
+    category:'promo',
+  },
+  {
+    name: "Empanada de atún + Cocacola de 2l",
+    image: "https://vectr.com/nachobaile/h198JBBIPa.svg?width=640&height=640&select=h198JBBIPapage0",
+    price: 9.95,
+    category:'promo',
+  },
+ 
 ]
 
 Products.create(catalogo, (err) => {
